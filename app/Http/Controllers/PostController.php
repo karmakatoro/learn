@@ -10,9 +10,17 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $posts = Post::paginate(8);
+        $data = '';
+        if ($request->ajax()) {
+            foreach ($posts as $post) {
+                $data.='<li>'.$post->id.' <strong>'.$post->name.'</strong> : '.$post->details.'</li>';
+            }
+            return $data;
+        }
+        return view('load');
     }
 
     /**

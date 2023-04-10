@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutocompleteController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 Route::get('/autocomplete', [AutocompleteController::class, 'index']);
 Route::post('/autocomplete/fetch', [AutocompleteController::class, 'fetch'])->name('autocomplete.fetch');
+
+Route::get('/load', [PostController::class, 'index']);
